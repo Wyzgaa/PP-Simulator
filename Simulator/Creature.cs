@@ -19,24 +19,8 @@ namespace Simulator
             }
             init
             {
-                if (value == null) { return; }
-                string temp_name = value.Trim();
-                if(temp_name.Length>0)
-                {
-                    if (temp_name.Length > 25)
-                    {
-                        temp_name = temp_name.Substring(0, 25);
-                        temp_name = temp_name.Trim();
-                    }
-                    temp_name = char.ToUpper(temp_name[0]) + temp_name.Substring(1);
-                    if (temp_name.Length < 3)
-                    {
-                        temp_name = temp_name + string.Concat(Enumerable.Repeat("#", 3 - temp_name.Length));
-                    }
-                }
-                if (temp_name == "")
-                    temp_name = "Unknown";
-                name = temp_name;
+                if (value == null) { return;}
+                name = Validator.Shortener(value,3,25,'#');
             }
         }
         public int Level
@@ -44,19 +28,7 @@ namespace Simulator
             get => level;
             init
             {
-                if (value <= 0)
-                {
-                    level = 1;
-                }
-                else if (value > 10)
-                {
-                    level = 10;
-                }
-                else
-                {
-                    level = value;
-                }
-                
+                level = Validator.Limiter(value,1,10);
             }
         }
         public void Upgrade()
@@ -74,10 +46,6 @@ namespace Simulator
             Level = level;
         }
         public abstract void SayHi();
-        public string Info
-        {
-            get { return $"{Name} [{Level}]"; }
-        }
 
         public void Go(Direction direction)
         {
@@ -99,6 +67,11 @@ namespace Simulator
             }
         }
         public abstract int Power { get; }
+        public abstract string Info { get; }
+        public override string ToString()
+        {
+            return $"{GetType().Name.ToUpper()}: {Info}";
+        }
     }
 }
 
