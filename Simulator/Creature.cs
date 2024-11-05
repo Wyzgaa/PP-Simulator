@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Simulator
 {
-    public class Creature
+    public abstract class Creature
     {
         private string? name = "Unknown";
         private int level=1;
@@ -73,10 +73,7 @@ namespace Simulator
             Name=name;
             Level = level;
         }
-        public void SayHi()
-        {
-            Console.WriteLine($"Hi, I'm {Name}, my level is {Level}.");
-        }
+        public abstract void SayHi();
         public string Info
         {
             get { return $"{Name} [{Level}]"; }
@@ -101,6 +98,7 @@ namespace Simulator
                 Go(direction);
             }
         }
+        public abstract int Power { get; }
     }
 }
 
