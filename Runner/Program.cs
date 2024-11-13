@@ -66,7 +66,6 @@ internal class Program
         Console.WriteLine(a.NextDiagonal(new Point(5, 5), Direction.Left));
         Console.WriteLine(a.NextDiagonal(new Point(5, 5), Direction.Right));
     }
-
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Simulator!\n");
