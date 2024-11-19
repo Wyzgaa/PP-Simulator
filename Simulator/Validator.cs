@@ -42,7 +42,7 @@ namespace Simulator
                 }
             }
             if (temp_name == "")
-                temp_name = "Unknown";
+                temp_name = string.Concat(Enumerable.Repeat(placeholder, min - temp_name.Length));
             return temp_name;
         }
     }

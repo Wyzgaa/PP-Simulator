@@ -12,10 +12,9 @@ public class Rectangle
     public readonly int X1, Y1, X2, Y2;
     public Rectangle(int x1, int y1, int x2, int y2)
     {
-        try
-        {
+        
             if (x1 == x2 || y1 == y2)
-                throw new ArgumentException();
+                throw new ArgumentException("nie chcemy 'chudych' prostokątów");
             if (x1 > x2)
             {
                 X1 = x2;
@@ -36,12 +35,10 @@ public class Rectangle
                 Y1 = y1;
                 Y2 = y2;
             }
-        }
-        catch (ArgumentException)
-        {
-            Console.WriteLine("nie chcemy 'chudych' prostokątów");
-        }
-            
+        //catch (ArgumentException)
+        //{
+        //    Console.WriteLine("nie chcemy 'chudych' prostokątów");
+        //}
     }
     public Rectangle(Point p1, Point p2) : this(p1.X, p1.Y, p2.X, p2.Y) { }
     public bool Contains(Point point) 
