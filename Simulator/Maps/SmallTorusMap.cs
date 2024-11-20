@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Simulator.Maps
 {
-    public class SmallTorusMap : Map
+    public class SmallTorusMap : SmallMap
     {
-        private int size;
-        public int Size 
+        public int size { get; }
+        public SmallTorusMap(int Size) : base(Size, Size)
         {
-            get { return size; }
+            size = Size;
         }
         public override bool Exist(Point p)
         {
-            if (p.X >= 0 && p.Y >= 0 && p.X <= Size - 1 && p.Y <= Size - 1)
+            if (p.X >= 0 && p.Y >= 0 && p.X <= SizeX - 1 && p.Y <= SizeY - 1)
                 return true;
             return false;
         }
@@ -51,11 +51,5 @@ namespace Simulator.Maps
             return result;
         }
 
-        public SmallTorusMap(int MapSize) 
-        {
-            if(MapSize<5 || MapSize >20)
-                throw new ArgumentOutOfRangeException("Rozmiar mapy musi zawierać się w przedziale [5,20]");
-            size= MapSize;
-        }
     }
 }

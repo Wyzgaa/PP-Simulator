@@ -9,7 +9,7 @@ namespace Simulator
 {
     public static class DirectionParser
     {
-        public static Direction[] Parse(string directions) 
+        public static List<Direction> Parse(string directions) 
         {
             int tablesize = 0;
             foreach (char a in directions.ToLower())
@@ -17,29 +17,29 @@ namespace Simulator
                 if (a == 'u' ||  a == 'd' || a=='l' || a=='r')
                     tablesize++;
             }
-            Direction[] result = new Direction[tablesize];
+            var result = new List<Direction>();
             int counter = 0;
             for (int i = 0; i<directions.Length; i++)
             {
                 switch (char.ToLower(directions[i]))
                 {
                     case 'u':
-                        result[counter] = Direction.Up;
+                        result.Add(Direction.Up);
                         counter++;
                         break;
 
                     case 'd':
-                        result[counter] = Direction.Down;
+                        result.Add(Direction.Down);
                         counter++;
                         break;
 
                     case 'l':
-                        result[counter] = Direction.Left;
+                        result.Add(Direction.Left);
                         counter++;
                         break;
 
                     case 'r':
-                        result[counter] = Direction.Right;
+                        result.Add(Direction.Right);
                         counter++;
                         break;
                 }
