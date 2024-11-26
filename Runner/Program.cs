@@ -97,6 +97,17 @@ internal class Program
     //        }
     //    }
     //}
+    static void SilulationTest()
+    {
+        List<Creature> creatures = new List<Creature>() { new Elf("A"), new Elf("B"), new Elf("C"), new Elf("D")};
+        SmallSquareMap mapa = new SmallSquareMap(10);
+        var positions = new List<Point>() { new Point(1, 1), new Point(1, 2), new Point(1, 3), new Point(1, 4), };
+        var simulation = new Simulation(mapa, creatures, positions, "rrdduull");
+        while(!simulation.Finished)
+        {
+            simulation.Turn();
+        }
+    }
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Simulator!\n");
@@ -107,5 +118,6 @@ internal class Program
         //Lab5a();
         //Lab5b();
         //TestMapy();
+        SilulationTest();
     }
 }
