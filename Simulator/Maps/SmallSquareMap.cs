@@ -8,9 +8,10 @@ namespace Simulator.Maps;
 
 public class SmallSquareMap : SmallMap
 {
+    public int Size { get; }
     public SmallSquareMap(int size) : base (size,size)
     {
-
+        Size = size;
     }
     public override Point Next(Point p, Direction d)
     {

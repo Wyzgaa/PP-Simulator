@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Simulator.Maps;
 
 namespace Simulator
 {
@@ -11,6 +12,8 @@ namespace Simulator
     {
         private string? name = "Unknown";
         private int level=1;
+        public Map? Map { get; private set; }
+        public Point Position { get; private set; }
         public string? Name
         {
             get
@@ -45,23 +48,26 @@ namespace Simulator
             Name=name;
             Level = level;
         }
+        public void PlaceOnMap(Map map, Point p)
+        {
+            Map = map;
+            Position = p;
+            map.Add(this, p);
+        }
         public abstract string Greeting();
 
-        public string Go(Direction direction) => $"{direction.ToString().ToLower()}";
+        public void Go(Direction direction)
+        {
+            if (Map == null)
+                throw new ArgumentNullException("Creature is not on the map");
+            Point Temp = Map.Next(Position, direction);
+            if(Temp.Equals(Position))
+                return;
+            Position = Temp;
+            Map.Move(this, Position, Temp);
+        }
 
-        public string[] Go(Direction[] directions)
-        {
-            string[] tab = new string[directions.Length];
-            for (int i=0; i < directions.Length; i++)
-            {
-                tab[i] = Go(directions[i]);
-            }
-            return tab;
-        }
-        public string[] Go(string directions)
-        {
-            return Go(DirectionParser.Parse(directions));
-        }
+
         public abstract int Power { get; }
         public abstract string Info { get; }
         public override string ToString()

@@ -26,8 +26,7 @@ public class ValidatorTests
     [InlineData("LongTestTest", 5, 10, '-', "LongTestTe")]
     [InlineData("      TestSpaces   ", 2, 10, '#', "TestSpaces")]
     [InlineData("ShortTest", 11, 10, '#', "ShortTest##")]
-    [InlineData("a                   b", 5, 10, '#', "ShortTest##")]
-    [InlineData("a                   b", 5, 10, '#', "a####")]
+    [InlineData("a                   b", 5, 10, '#', "A####")]
     public void Shortener_ValidStringReturnsCorrectString(string value, int min, int max, char placeholder, string expected)
     {
         Assert.Equal(expected, Validator.Shortener(value, min, max, placeholder));

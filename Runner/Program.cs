@@ -1,4 +1,5 @@
 ﻿using Simulator.Maps;
+using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Simulator;
@@ -66,6 +67,36 @@ internal class Program
         Console.WriteLine(a.NextDiagonal(new Point(5, 5), Direction.Left));
         Console.WriteLine(a.NextDiagonal(new Point(5, 5), Direction.Right));
     }
+    //static void TestMapy()
+    //{
+    //    var mapa = new SmallSquareMap(10);
+    //    var creature2 = new Orc("Mejoza");
+    //    var creature1 = new Elf("Mitoza");
+    //    var startPosition = new Point(1, 1);
+    //    creature1.PlaceOnMap(mapa, startPosition);
+    //    creature2.PlaceOnMap(mapa, startPosition);
+    //    List<Creature> creaturesAtPoint = mapa.At(startPosition);
+    //    if (creaturesAtPoint.Count > 0)
+    //    {
+    //        Console.WriteLine("Stworzenia w punkcie:");
+    //        foreach (var creature in creaturesAtPoint)
+    //        {
+    //            Console.WriteLine(creature.Name);
+    //        }
+    //    }
+    //    creature1.Go(Direction.Right);
+    //    Console.WriteLine(creature1.Position);//2,1
+    //    var tempPoint = new Point(2, 1);
+    //    List<Creature> creaturesAtPoint2 = mapa.At(tempPoint);
+    //    if (creaturesAtPoint2.Count > 0)
+    //    {
+    //        Console.WriteLine("Stworzenia w punkcie:");
+    //        foreach (var creature in creaturesAtPoint2)
+    //        {
+    //            Console.WriteLine(creature.Name);
+    //        }
+    //    }
+    //}
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Simulator!\n");
@@ -73,7 +104,8 @@ internal class Program
         //Console.WriteLine(p.Next(Direction.Right));          // (11, 25)
         //Console.WriteLine(p.NextDiagonal(Direction.Right));  // (11, 24)
         //zła nazwa ostatniego commita
-        Lab5a();
-        Lab5b();
+        //Lab5a();
+        //Lab5b();
+        //TestMapy();
     }
 }
