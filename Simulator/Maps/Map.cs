@@ -26,10 +26,10 @@ public abstract class Map
         SizeY = sizeY;
         _map = new Rectangle(0, 0, SizeX - 1, SizeY - 1);
     }
-    public abstract void Add(Creature creature, Point p);
-    public abstract void Remove(Creature creature, Point p);
-    public abstract void Move(Creature creature, Point startPosition, Point endPosition);
-    public abstract List<Creature> At(Point p);
+    public abstract void Add(IMappable mappable, Point p);
+    public abstract void Remove(IMappable mappable, Point p);
+    public abstract void Move(IMappable mappable, Point startPosition, Point endPosition);
+    public abstract List<IMappable> At(Point p);
     public int SizeX { get; }
     public int SizeY { get; }
 

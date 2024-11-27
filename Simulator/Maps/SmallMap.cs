@@ -9,7 +9,7 @@ namespace Simulator.Maps;
 
 public abstract class SmallMap : Map
 {
-    List<Creature>?[,] _fields;
+    List<IMappable>?[,] _fields;
     public SmallMap(int SizeX, int SizeY) : base(SizeX, SizeY)
     {
         if (SizeX > 20)
@@ -17,31 +17,31 @@ public abstract class SmallMap : Map
         if (SizeY > 20)
             throw new ArgumentOutOfRangeException(nameof(SizeY), "Too high");
 
-        _fields = new List<Creature>[SizeX, SizeY];
+        _fields = new List<IMappable>[SizeX, SizeY];
     }
-    public override void Add(Creature creature, Point p)
+    public override void Add(IMappable mappable, Point p)
     {
         if(_fields[p.X, p.Y] == null)
-            _fields[p.X, p.Y] = new List<Creature>();
-        _fields[p.X, p.Y]?.Add(creature);
+            _fields[p.X, p.Y] = new List<IMappable>();
+        _fields[p.X, p.Y]?.Add(mappable);
     }
-    public override void Remove(Creature creature, Point p)
+    public override void Remove(IMappable mappable, Point p)
     {
-        if (_fields[p.X, p.Y] != null && _fields[p.X, p.Y].Contains(creature))
+        if (_fields[p.X, p.Y] != null && _fields[p.X, p.Y].Contains(mappable))
         {
-            _fields[p.X, p.Y].Remove(creature);
+            _fields[p.X, p.Y].Remove(mappable);
             if (_fields[p.X, p.Y].Count == 0)
             {
                 _fields[p.X, p.Y] = null; 
             }
         }
     }
-    public override void Move(Creature creature, Point startPosition, Point endPosition)
+    public override void Move(IMappable mappable, Point startPosition, Point endPosition)
     {
-        Remove(creature, startPosition);
-        Add(creature, endPosition);
+        Remove(mappable, startPosition);
+        Add(mappable, endPosition);
     }
-    public override List<Creature> At(Point p)
+    public override List<IMappable> At(Point p)
     {
         return _fields[p.X, p.Y];
     }
