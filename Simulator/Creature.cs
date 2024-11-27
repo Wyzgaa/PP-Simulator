@@ -63,8 +63,8 @@ namespace Simulator
             Point Temp = Map.Next(Position, direction);
             if(Temp.Equals(Position))
                 return;
-            Position = Temp;
             Map.Move(this, Position, Temp);
+            Position = Temp;
         }
 
 

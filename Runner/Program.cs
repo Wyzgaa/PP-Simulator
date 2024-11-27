@@ -67,47 +67,79 @@ internal class Program
         Console.WriteLine(a.NextDiagonal(new Point(5, 5), Direction.Left));
         Console.WriteLine(a.NextDiagonal(new Point(5, 5), Direction.Right));
     }
-    //static void TestMapy()
-    //{
-    //    var mapa = new SmallSquareMap(10);
-    //    var creature2 = new Orc("Mejoza");
-    //    var creature1 = new Elf("Mitoza");
-    //    var startPosition = new Point(1, 1);
-    //    creature1.PlaceOnMap(mapa, startPosition);
-    //    creature2.PlaceOnMap(mapa, startPosition);
-    //    List<Creature> creaturesAtPoint = mapa.At(startPosition);
-    //    if (creaturesAtPoint.Count > 0)
-    //    {
-    //        Console.WriteLine("Stworzenia w punkcie:");
-    //        foreach (var creature in creaturesAtPoint)
-    //        {
-    //            Console.WriteLine(creature.Name);
-    //        }
-    //    }
-    //    creature1.Go(Direction.Right);
-    //    Console.WriteLine(creature1.Position);//2,1
-    //    var tempPoint = new Point(2, 1);
-    //    List<Creature> creaturesAtPoint2 = mapa.At(tempPoint);
-    //    if (creaturesAtPoint2.Count > 0)
-    //    {
-    //        Console.WriteLine("Stworzenia w punkcie:");
-    //        foreach (var creature in creaturesAtPoint2)
-    //        {
-    //            Console.WriteLine(creature.Name);
-    //        }
-    //    }
-    //}
-    static void SilulationTest()
+    static void TestMapy()
     {
-        List<Creature> creatures = new List<Creature>() { new Elf("A"), new Elf("B"), new Elf("C"), new Elf("D")};
-        SmallSquareMap mapa = new SmallSquareMap(10);
-        var positions = new List<Point>() { new Point(1, 1), new Point(1, 2), new Point(1, 3), new Point(1, 4), };
-        var simulation = new Simulation(mapa, creatures, positions, "rrdduull");
-        while(!simulation.Finished)
+        var mapa = new SmallSquareMap(10);
+        var creature2 = new Orc("Mejoza");
+        var creature1 = new Elf("Mitoza");
+        var creature3 = new Elf("Git");
+        var startPosition = new Point(1, 1);
+        var startPosition2 = new Point(4, 4);
+        var startPosition6 = new Point(5, 4);
+        creature1.PlaceOnMap(mapa, startPosition);
+        creature2.PlaceOnMap(mapa, startPosition);
+        creature3.PlaceOnMap(mapa, startPosition2);
+        List<Creature> creaturesAtPoint = mapa.At(startPosition);
+        List<Creature> creaturesAtPoint3 = mapa.At(startPosition2);
+        
+        if (creaturesAtPoint.Count > 0)
         {
-            simulation.Turn();
+            Console.WriteLine("Stworzenia w punkcie:");
+            foreach (var creature in creaturesAtPoint3)
+            {
+                Console.WriteLine(creature.Name);
+            }
+        }
+        creature3.Go(Direction.Right);
+        List<Creature> creaturesAtPoint4 = mapa.At(startPosition6);
+        if (creaturesAtPoint.Count > 0)
+        {
+            Console.WriteLine("Stworzenia w punkcie:");
+            foreach (var creature in creaturesAtPoint3)
+            {
+                Console.WriteLine(creature.Name);
+            }
+        }
+        if (creaturesAtPoint.Count > 0)
+        {
+            Console.WriteLine("Stworzenia w punkcie:");
+            foreach (var creature in creaturesAtPoint4)
+            {
+                Console.WriteLine(creature.Name);
+            }
+        }
+        if (creaturesAtPoint.Count > 0)
+        {
+            Console.WriteLine("Stworzenia w punkcie:");
+            foreach (var creature in creaturesAtPoint)
+            {
+                Console.WriteLine(creature.Name);
+            }
+        }
+        creature1.Go(Direction.Right);
+        Console.WriteLine(creature1.Position);//2,1
+        var tempPoint = new Point(2, 1);
+        List<Creature> creaturesAtPoint2 = mapa.At(tempPoint);
+        if (creaturesAtPoint2.Count > 0)
+        {
+            Console.WriteLine("Stworzenia w punkcie:");
+            foreach (var creature in creaturesAtPoint2)
+            {
+                Console.WriteLine(creature.Name);
+            }
         }
     }
+    //static void SilulationTest()
+    //{
+    //    List<Creature> creatures = new List<Creature>() { new Elf("A"), new Elf("B"), new Elf("C"), new Elf("D")};
+    //    SmallSquareMap mapa = new SmallSquareMap(10);
+    //    var positions = new List<Point>() { new Point(1, 1), new Point(1, 2), new Point(1, 3), new Point(1, 4), };
+    //    var simulation = new Simulation(mapa, creatures, positions, "rrdduull");
+    //    while(!simulation.Finished)
+    //    {
+    //        simulation.Turn();
+    //    }
+    //}
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Simulator!\n");
@@ -117,7 +149,7 @@ internal class Program
         //zła nazwa ostatniego commita
         //Lab5a();
         //Lab5b();
-        //TestMapy();
-        SilulationTest();
+        TestMapy();
+        //SilulationTest();
     }
 }
