@@ -10,7 +10,7 @@ namespace Simulator.Maps;
 public abstract class SmallMap : Map
 {
     List<IMappable>?[,] _fields;
-    public SmallMap(int SizeX, int SizeY) : base(SizeX, SizeY)
+    protected SmallMap(int SizeX, int SizeY) : base(SizeX, SizeY)
     {
         if (SizeX > 20)
             throw new ArgumentOutOfRangeException(nameof(SizeX), "Too wide");

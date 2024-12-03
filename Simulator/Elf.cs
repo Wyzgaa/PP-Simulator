@@ -21,6 +21,7 @@ namespace Simulator
                 agility = value;
             }
         }
+        public override char Symbol { get; } = 'E';
         public void Sing()
         {
             singCounter++;

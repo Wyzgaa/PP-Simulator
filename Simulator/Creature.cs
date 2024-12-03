@@ -70,6 +70,9 @@ namespace Simulator
 
         public abstract int Power { get; }
         public abstract string Info { get; }
+
+        public virtual char Symbol { get; } = 'C';
+
         public override string ToString()
         {
             return $"{GetType().Name.ToUpper()}: {Info}";

@@ -10,6 +10,7 @@ namespace Simulator
     {
         private int rage=0;
         private int rageCounter = 0;
+        public override char Symbol { get; } = 'O';
         public int Rage 
         {
             get => rage;

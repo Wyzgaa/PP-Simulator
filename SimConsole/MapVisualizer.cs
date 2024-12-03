@@ -75,10 +75,7 @@ public class MapVisualizer
         else if (creatures.Count == 1)
         {
             var creature = creatures[0];
-            if (creature is Elf)
-                return 'E';
-            if (creature is Orc)
-                return 'O';
+            return creature.Symbol;
         }
         return 'X'; 
     }

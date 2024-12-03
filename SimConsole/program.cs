@@ -10,13 +10,12 @@ namespace SimConsole;
 
 public class program
 {
-    static void Main(string[] args)
+    public void PoprzednieTesty()
     {
-        Console.OutputEncoding = Encoding.UTF8;
         SmallSquareMap map = new(5);
-        List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor")];
-        List<Point> points = [new(2, 3), new(3, 3)];
-        string moves = "rrufdru";
+        List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor"), new Animals("Mamut", 30), new Birds("Orzeł", 10), new Birds("Pingwin", 20, false)];
+        List<Point> points = [new(2, 3), new(3, 3), new(1, 1), new(0, 0), new(1, 2)];
+        string moves = "rrufdrurudrl";
         Simulation simulation = new(map, creatures, points, moves);
         MapVisualizer mapVisualizer = new(simulation.Map);
 
@@ -25,12 +24,23 @@ public class program
         mapVisualizer.Draw();
         Console.WriteLine("Press any key to continue...");
         Console.ReadLine();
-
+        Animals Mamuty = new Animals("Mamut", 50);
+    }
+    static void Main(string[] args)
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+        SmallTorusMap map = new(8, 6);
+        List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor"), new Animals("Królik", 30), new Birds("Orzeł", 5), new Birds("Struś", 10, false)];
+        List<Point> points = [new(2, 3), new(3, 3), new(1, 1), new(0, 0), new(7, 2)];
+        string moves = "rrufdrurudrl";
+        Simulation simulation = new(map, creatures, points, moves);
+        MapVisualizer mapVisualizer = new(simulation.Map);
+        mapVisualizer.Draw();
         while (!simulation.Finished)
         {
             Console.WriteLine($"Turn {simulation.CurrentMoveIndex + 1}");
-            //Console.WriteLine($"{simulation.CurrentMappable.GetType().Name.ToUpper()}: { simulation.CurrentMappable.Info } " +
-            //    $"({simulation.CurrentMappable.Position.X}, " +   $"{simulation.CurrentMappable.Position.Y}) goes {simulation.CurrentMoveName}:");
+            Console.WriteLine($"{simulation.CurrentMappable.GetType().Name.ToUpper()}: {simulation.CurrentMappable.Info} " +
+                $"({simulation.CurrentMappable.Position.X}, " + $"{simulation.CurrentMappable.Position.Y}) goes {simulation.CurrentMoveName}:");
             simulation.Turn();
             
             mapVisualizer.Draw();

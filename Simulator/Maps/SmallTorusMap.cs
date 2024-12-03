@@ -8,10 +8,12 @@ namespace Simulator.Maps
 {
     public class SmallTorusMap : SmallMap
     {
-        public int size { get; }
-        public SmallTorusMap(int Size) : base(Size, Size)
+        public int SizeY { get; }
+        public int SizeX { get; }
+        public SmallTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY)
         {
-            size = Size;
+            SizeX = sizeX;
+            SizeY = sizeY;
         }
         public override bool Exist(Point p)
         {
@@ -26,10 +28,10 @@ namespace Simulator.Maps
             var nextpoint = p.Next(d);
             if (Exist(nextpoint))
                 return nextpoint;
-            if (nextpoint.X >= size || nextpoint.X < 0)
-                x = (nextpoint.X+size)%size;
-            if (nextpoint.Y >= size || nextpoint.Y < 0)
-                y = (nextpoint.Y + size) % size;
+            if (nextpoint.X >= SizeX || nextpoint.X < 0)
+                x = (nextpoint.X+SizeX)%SizeX;
+            if (nextpoint.Y >= SizeY || nextpoint.Y < 0)
+                y = (nextpoint.Y + SizeY) % SizeY;
             Point result = new Point(x, y);
             return result;
         }
@@ -41,11 +43,11 @@ namespace Simulator.Maps
 
             if (Exist(nextpoint))
                 return nextpoint;
-            if (nextpoint.X >= size || nextpoint.X < 0)
-                x = (nextpoint.X + size) % size;
+            if (nextpoint.X >= SizeX || nextpoint.X < 0)
+                x = (nextpoint.X + SizeX) % SizeX;
             else x = nextpoint.X;
-            if (nextpoint.Y >= size || nextpoint.Y < 0)
-                y = (nextpoint.Y + size) % size;
+            if (nextpoint.Y >= SizeY || nextpoint.Y < 0)
+                y = (nextpoint.Y + SizeY) % SizeY;
             else y = nextpoint.Y;
             Point result = new Point(x, y);
             return result;

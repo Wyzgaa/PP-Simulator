@@ -11,6 +11,9 @@ public interface IMappable
     //object Info { get; }
     //object Position { get; set; }
 
+    public char Symbol { get; }
+    string Info { get; }
+    Point Position { get; }
     void Go(Direction direction);
     void PlaceOnMap(Map map, Point point);
 }
