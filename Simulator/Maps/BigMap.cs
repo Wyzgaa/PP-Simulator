@@ -28,7 +28,7 @@ public abstract class BigMap : Map
             _fields[p].Remove(mappable);
             if (_fields[p].Count == 0)
             {
-                _fields.Remove(p); // Usuń klucz, jeśli lista jest pusta
+                _fields.Remove(p); 
             }
         }
     }
@@ -37,10 +37,7 @@ public abstract class BigMap : Map
         Remove(mappable, startPosition);
         Add(mappable, endPosition);
     }
-    //public override List<IMappable> At(Point p)
-    //{
-    //    return _fields[p];
-    //}
+
     public override List<IMappable> At(Point p)
     {
         return _fields.ContainsKey(p) ? _fields[p] : new List<IMappable>();

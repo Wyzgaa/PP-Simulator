@@ -39,43 +39,6 @@ namespace Simulator.Maps
             Point result = new Point(x, y);
             return result;
         }
-
-        //public override Point NextDiagonal(Point p, Direction d)
-        //{
-        //    int x = p.X, y = p.Y;
-        //    var nextpoint = p.NextDiagonal(d);
-
-        //    if (Exist(nextpoint))
-        //        return nextpoint;
-        //    switch (d)
-        //    {
-        //        case Direction.Up:
-        //            if (p.Y != SizeY - 1)
-        //                return new Point(p.X - 1, p.Y + 1);
-        //            if (p.X != SizeX - 1)
-        //                return new Point(p.X + 1, p.Y - 1);
-        //            return new Point(p.X - 1, p.Y - 1);
-        //        case Direction.Left:
-        //            if (p.Y != SizeY - 1)
-        //                return new Point(p.X + 1, p.Y + 1);
-        //            if (p.X != 0)
-        //                return new Point(p.X - 1, p.Y - 1);
-        //            return new Point(1, p.Y - 1); ;
-        //        case Direction.Right:
-        //            if (p.X != SizeX - 1)
-        //                return new Point(p.X + 1, p.Y + 1);
-        //            if (p.Y != 0)
-        //                return new Point(p.X - 1, p.Y - 1);
-        //            return new Point(p.X - 1, 1); ;
-        //        case Direction.Down:
-        //            if (p.X != 0)
-        //                return new Point(p.X - 1, p.Y + 1);
-        //            if (p.Y != 0)
-        //                return new Point(p.X + 1, p.Y - 1);
-        //            return new Point(1, 1); ;
-        //    }
-        //    throw new InvalidDataException("Invalid Direction Value.");
-        //}
         public override Point NextDiagonal(Point p, Direction d)
         {
             int x = p.X, y = p.Y;
