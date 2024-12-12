@@ -29,9 +29,9 @@ public class program
     static void Main(string[] args)
     {
         Console.OutputEncoding = Encoding.UTF8;
-        SmallTorusMap map = new(8, 6);
+        BigBounceMap map = new(8, 6);
         List<IMappable> creatures = [new Orc("Gorbag"), new Elf("Elandor"), new Animals("Królik", 30), new Birds("Orzeł", 5), new Birds("Struś", 10, false)];
-        List<Point> points = [new(2, 3), new(3, 3), new(1, 1), new(0, 0), new(7, 2)];
+        List<Point> points = [new(2, 3), new(7, 3), new(1, 1), new(5, 5), new(7, 0)];
         string moves = "rrufdrurudrl";
         Simulation simulation = new(map, creatures, points, moves);
         MapVisualizer mapVisualizer = new(simulation.Map);
